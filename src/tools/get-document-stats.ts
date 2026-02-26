@@ -11,11 +11,21 @@ export const getDocumentStats: Tool = {
     inputSchema: {
       type: "object" as const,
       properties: {
-        date_from: {
+        code_sii: {
+          type: "string",
+          description: "Filtrar por tipo DTE (opcional)",
+          enum: ["33", "34", "39", "41", "46", "52", "56", "61"],
+        },
+        status: {
+          type: "string",
+          description: "Filtrar por estado (opcional)",
+          enum: ["accepted", "rejected", "pending", "with_errors"],
+        },
+        from_date: {
           type: "string",
           description: "Fecha desde (YYYY-MM-DD). Opcional.",
         },
-        date_to: {
+        to_date: {
           type: "string",
           description: "Fecha hasta (YYYY-MM-DD). Opcional.",
         },
@@ -25,8 +35,10 @@ export const getDocumentStats: Tool = {
   },
   execute: async (api: ApiClient, args: Record<string, unknown>) => {
     const params: Record<string, string> = {};
-    if (args.date_from) params.date_from = args.date_from as string;
-    if (args.date_to) params.date_to = args.date_to as string;
+    if (args.code_sii) params.code_sii = args.code_sii as string;
+    if (args.status) params.status = args.status as string;
+    if (args.from_date) params.from_date = args.from_date as string;
+    if (args.to_date) params.to_date = args.to_date as string;
     return api.get("/api/v1/documents/stats", params);
   },
 };

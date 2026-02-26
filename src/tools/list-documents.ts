@@ -8,7 +8,7 @@ export const listDocuments: Tool = {
       "Lista documentos tributarios emitidos con filtros opcionales. " +
       "Permite filtrar por tipo DTE (33=Factura, 34=Factura Exenta, 39=Boleta, " +
       "41=Boleta Exenta, 46=Factura Compra, 52=Guía Despacho, 56=Nota Débito, " +
-      "61=Nota Crédito), estado SII y rango de fechas. " +
+      "61=Nota Crédito), estado y rango de fechas. " +
       "Retorna lista paginada con folio, tipo, monto, estado y fecha de emisión.",
     inputSchema: {
       type: "object" as const,
@@ -21,16 +21,16 @@ export const listDocuments: Tool = {
             "56=Nota Débito, 61=Nota Crédito",
           enum: ["33", "34", "39", "41", "46", "52", "56", "61"],
         },
-        status_sii: {
+        status: {
           type: "string",
-          description: "Estado en el SII",
+          description: "Estado del documento",
           enum: ["accepted", "rejected", "pending", "with_errors"],
         },
-        date_from: {
+        from_date: {
           type: "string",
           description: "Fecha desde (YYYY-MM-DD)",
         },
-        date_to: {
+        to_date: {
           type: "string",
           description: "Fecha hasta (YYYY-MM-DD)",
         },
@@ -38,9 +38,9 @@ export const listDocuments: Tool = {
           type: "number",
           description: "Página (default 1)",
         },
-        page_size: {
+        limit: {
           type: "number",
-          description: "Resultados por página (default 10, max 50)",
+          description: "Resultados por página (default 20, max 100)",
         },
       },
       required: [],
@@ -49,11 +49,11 @@ export const listDocuments: Tool = {
   execute: async (api: ApiClient, args: Record<string, unknown>) => {
     const params: Record<string, string> = {};
     if (args.code_sii) params.code_sii = args.code_sii as string;
-    if (args.status_sii) params.status_sii = args.status_sii as string;
-    if (args.date_from) params.date_from = args.date_from as string;
-    if (args.date_to) params.date_to = args.date_to as string;
+    if (args.status) params.status = args.status as string;
+    if (args.from_date) params.from_date = args.from_date as string;
+    if (args.to_date) params.to_date = args.to_date as string;
     if (args.page) params.page = String(args.page);
-    if (args.page_size) params.page_size = String(args.page_size);
+    if (args.limit) params.limit = String(args.limit);
     return api.get("/api/v1/documents", params);
   },
 };
