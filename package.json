@@ -1,0 +1,39 @@
+{
+  "name": "full-dte-mcp",
+  "version": "1.0.0",
+  "description": "MCP Server para consultar datos de facturación electrónica desde la API FullDTE",
+  "main": "dist/index.js",
+  "bin": {
+    "full-dte-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "facturacion-electronica",
+    "dte",
+    "sii",
+    "chile"
+  ],
+  "author": "IntegraFacturación",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "@types/node": "^22.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}
