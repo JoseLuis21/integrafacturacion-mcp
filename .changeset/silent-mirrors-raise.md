@@ -1,3 +1,4 @@
+---
 "@integrafacturacion/mcp": patch
 ---
 
