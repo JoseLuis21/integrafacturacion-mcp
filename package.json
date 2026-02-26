@@ -1,10 +1,10 @@
 {
-  "name": "full-dte-mcp",
+  "name": "@ifcl/integrafacturacion-mcp",
   "version": "1.0.0",
-  "description": "MCP Server para consultar datos de facturación electrónica desde la API FullDTE",
+  "description": "MCP Server para consultar datos de facturación electrónica desde la API Integrafacturacion",
   "main": "dist/index.js",
   "bin": {
-    "full-dte-mcp": "dist/index.js"
+    "integrafacturacion-mcp": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
