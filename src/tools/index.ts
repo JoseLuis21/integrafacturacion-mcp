@@ -9,7 +9,6 @@ import { getDocumentStats } from "./get-document-stats.js";
 import { getNumerationSummary } from "./get-numeration-summary.js";
 import { getLastFolio } from "./get-last-folio.js";
 import { getDteBalance } from "./get-dte-balance.js";
-import { getPaymentHistory } from "./get-payment-history.js";
 import { listPurchases } from "./list-purchases.js";
 
 export const allTools: Tool[] = [
@@ -23,7 +22,6 @@ export const allTools: Tool[] = [
   getNumerationSummary,
   getLastFolio,
   getDteBalance,
-  getPaymentHistory,
   listPurchases,
 ];
 
