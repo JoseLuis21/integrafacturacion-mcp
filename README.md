@@ -87,3 +87,22 @@ npm run dev    # Watch mode
 npm run build  # Build
 npm start      # Run
 ```
+
+## Publicación a npm con versiones automáticas
+
+Este repo usa [Changesets](https://github.com/changesets/changesets) + GitHub Actions.
+
+### Configuración inicial
+
+1. Crear el secret `NPM_TOKEN` en GitHub (`Settings > Secrets and variables > Actions`).
+2. El token debe ser de npm con permisos de publicación del paquete.
+
+### Flujo de versiones
+
+1. Para cada cambio que quieras versionar, crea un changeset:
+   ```bash
+   pnpm changeset
+   ```
+2. Haz commit del archivo en `.changeset/*.md` junto a tu cambio.
+3. Al hacer merge a `main`, el workflow `Release` crea/actualiza un PR de release con el nuevo versionado.
+4. Cuando ese PR se mergea, el mismo workflow publica automáticamente a npm.
