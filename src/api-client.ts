@@ -1,5 +1,5 @@
 /**
- * HTTP client for full-dte-api-sii.
+ * HTTP client for IntegraFacturacion API.
  * All requests are authenticated via x-api-key header.
  */
 export class ApiClient {
